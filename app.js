@@ -112,6 +112,41 @@ const deleteTour = (req, res) => {
   );
 };
 
+const getAllUsers = (req, res) => {
+  res.status(501).json({
+    status: 'error',
+    message: 'This route is not yet Implemented',
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(501).json({
+    status: 'error',
+    message: 'This route is not yet Implemented',
+  });
+};
+
+const getUser = (req, res) => {
+  res.status(501).json({
+    status: 'error',
+    message: 'This route is not yet Implemented',
+  });
+};
+
+const updateUser = (req, res) => {
+  res.status(501).json({
+    status: 'error',
+    message: 'This route is not yet Implemented',
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.status(501).json({
+    status: 'error',
+    message: 'This route is not yet Implemented',
+  });
+};
+
 // Routes
 app.route('/api/v1/tours').get(getAllTours).post(createTour);
 
@@ -120,6 +155,14 @@ app
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
+
+app.route('/api/v1/users').get(getAllUsers).post(createUser);
+
+app
+  .route('/api/v1/users/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 
 const port = 3000;
 app.listen(port, () => {
