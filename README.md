@@ -10,4 +10,6 @@ node.js, express, mongoDB and mongoose.
   - [ ] Advanced API design
     - [x] Filtering
     - [x] Sorting
+    - [x] Field Limiting
+    - [x] Pagination  
 
