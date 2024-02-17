@@ -17,14 +17,25 @@ exports.getAllTours = async (req, res) => {
       const sortBy = req.query.sort.split(',').join(' ');
       query = query.sort(sortBy);
     } else {
-      query = query.sort('-createdAt');
+      query = query.sort('-createdAt _id');
     }
 
+    // Field Limiting
     if (req.query.fields) {
       const fields = req.query.fields.split(',').join(' ');
       query = query.select(fields);
     } else {
       query = query.select('-__v');
+    }
+
+    // Pagination
+    const pageNum = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (pageNum - 1) * limit;
+    query = query.skip(skip).limit(limit);
+    if (req.query.page) {
+      const numofTours = await Tour.countDocuments();
+      if (skip >= numofTours) throw new Error('Page does not exist!');
     }
 
     const tours = await query;
@@ -39,7 +50,7 @@ exports.getAllTours = async (req, res) => {
   } catch (err) {
     res.status(404).json({
       status: 'fail',
-      message: err,
+      message: err.message,
     });
   }
 };
