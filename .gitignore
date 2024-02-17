@@ -1,3 +1,6 @@
 node_modules/
 .prettierrc
 config.env
+public/
+dev-data/img
+dev-data/templates
