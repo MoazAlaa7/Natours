@@ -11,5 +11,6 @@ node.js, express, mongoDB and mongoose.
     - [x] Filtering
     - [x] Sorting
     - [x] Field Limiting
-    - [x] Pagination  
+    - [x] Pagination
+    - [x] Aliasing 
 
