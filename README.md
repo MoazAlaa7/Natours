@@ -7,7 +7,7 @@ node.js, express, mongoDB and mongoose.
 ### Features:
 - [ ] CRUD operations
   - [x] Basic operations 
-  - [ ] More Advanced API design
+  - [ ] More Advanced API Design
     - [x] Query Manipulation
       - [x] Filtering
       - [x] Sorting
@@ -15,7 +15,7 @@ node.js, express, mongoDB and mongoose.
       - [x] Pagination
       - [x] Aliasing
     - [x] Aggregation
-      - [x] Mathcing
+      - [x] Matching
       - [x] grouping
       - [x] Sorting
       - [x] Unwinding
