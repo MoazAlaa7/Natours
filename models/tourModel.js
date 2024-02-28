@@ -10,6 +10,10 @@ const tourSchema = new mongoose.Schema(
       trim: true,
     },
     slug: String,
+    secretTour: {
+      type: Boolean,
+      default: false,
+    },
     duration: {
       type: Number,
       required: [true, 'a tour must have a duration'],
@@ -72,10 +76,24 @@ tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
-// DOCUMENT MIDDLEWARE, RUNS ONLY BEFORE .save() & .create()
+// DOCUMENT MIDDLEWARE, RUNS BEFORE DOCUMENT IS SAVED
 // Also called a PRE-SAVE HOOK
 tourSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+// QUERY MIDDLEWARE, RUNS BEFORE THE QUERY IS EXECUTED
+// PRE-FIND HOOK
+tourSchema.pre(/^find/, function (next) {
+  this.find({ secretTour: { $ne: true } });
+  this.start = Date.now();
+  next();
+});
+
+// POST-FIND HOOK
+tourSchema.post(/^find/, function (docs, next) {
+  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
 
