@@ -32,6 +32,7 @@
     "express": "^4.18.2",
     "mongoose": "^5.13.22",
     "prettier": "^3.2.5",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "validator": "^13.11.0"
   }
 }
