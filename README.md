@@ -21,4 +21,4 @@ node.js, express, mongoDB and mongoose.
       - [x] Unwinding
       - [x] Projecting
 
-- [ ] Error Handling
+- [x] Error Handling
