@@ -22,3 +22,9 @@ node.js, express, mongoDB and mongoose.
       - [x] Projecting
 
 - [x] Error Handling
+
+- [x] Authentication  
+     - [x] Using jsonwebtoken (JWT)
+     
+
+      
