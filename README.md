@@ -23,7 +23,7 @@ node.js, express, mongoDB and mongoose.
 
 - [x] Error Handling
 
-- [x] Authentication  
+- [x] Authentication & Authorization
      - [x] Using jsonwebtoken (JWT)
      
 
