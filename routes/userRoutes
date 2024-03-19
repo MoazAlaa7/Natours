@@ -16,11 +16,10 @@ router.patch(
   authController.updatePassword,
 );
 
-router.patch(
-  '/updateMyInfo',
-  authController.protectRoute,
-  userController.updateMyInfo,
-);
+router
+  .route('/myAccount')
+  .patch(authController.protectRoute, userController.updateMyInfo)
+  .delete(authController.protectRoute, userController.deleteMyAcc);
 
 router
   .route('/')

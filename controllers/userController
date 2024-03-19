@@ -33,6 +33,14 @@ exports.updateMyInfo = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.deleteMyAcc = catchAsync(async (req, res, next) => {
+  await User.findByIdAndDelete(req.user.id);
+
+  res.status(200).json({
+    status: 'success',
+  });
+});
+
 exports.getAllUsers = (req, res) => {
   res.status(501).json({
     status: 'error',
