@@ -1,4 +1,5 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -8,6 +9,13 @@ const errorController = require('./controllers/errorController');
 const app = express();
 
 app.use(express.json());
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests! Please try again later.',
+});
+app.use('/api', limiter);
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toDateString();
