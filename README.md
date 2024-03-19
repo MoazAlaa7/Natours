@@ -25,6 +25,13 @@ node.js, express, mongoDB and mongoose.
 
 - [x] Authentication & Authorization
      - [x] Using jsonwebtoken (JWT)
+
+- [x] Security Best Practices
+     - [x] Use Helmet
+     - [x] Use cookies securely
+     - [x] Use rate limiting & bcrypt (Prevent brute-force & DOS attacks)
+     - [x] Data Sanitization (Prevent cross-site scripting & Query Injection)
+     - [x] Prevent Parameter Pollution 
      
 
       
