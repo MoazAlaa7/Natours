@@ -11,6 +11,18 @@ const createSignToken = (id) =>
     expiresIn: process.env.JWT_EXPIRE,
   });
 
+const createJWTCookie = (user, token, res) => {
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
+    ),
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  res.cookie('JWT', token, cookieOptions);
+};
+
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -21,6 +33,10 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 
   const token = createSignToken(newUser._id);
+  createJWTCookie(newUser, token, res);
+
+  // Remove password from the output
+  newUser.password = undefined;
 
   res.status(201).json({
     status: 'success',
@@ -47,6 +63,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) Everything is fine, send token to the client
   const token = createSignToken(user._id);
+  createJWTCookie(user, token, res);
 
   res.status(200).json({
     status: 'success',
@@ -177,6 +194,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   // 4) Log the user in (send JWT)
   const token = createSignToken(user._id);
+  createJWTCookie(user, token, res);
 
   res.status(200).json({
     status: 'success',
@@ -200,6 +218,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   // 4) Create token
   const token = createSignToken(user._id);
+  createJWTCookie(user, token, res);
 
   res.status(200).json({
     status: 'success',
