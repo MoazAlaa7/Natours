@@ -3,7 +3,9 @@ const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
-  const reviews = await Review.find();
+  const reviews = req.params.tourId
+    ? await Review.find({ tour: req.params.tourId })
+    : await Review.find();
 
   res.status(200).json({
     status: 'success',
