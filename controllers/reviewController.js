@@ -1,6 +1,7 @@
 const Review = require('../models/reviewModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
+const factory = require('./controllerFactory');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   const reviews = req.params.tourId
@@ -30,3 +31,5 @@ exports.createReview = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.deleteReview = factory.deleteOne(Review);
