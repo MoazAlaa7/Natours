@@ -1,3 +1,5 @@
+const AppError = require('./appError');
+
 class APIFeatures {
   constructor(query, queryString) {
     this.query = query;
@@ -30,6 +32,8 @@ class APIFeatures {
   limitFields() {
     if (this.queryString.fields) {
       const fields = this.queryString.fields.split(',').join(' ');
+      if (fields.includes('password'))
+        throw new AppError('Invalid selected fields', 400);
       this.query = this.query.select(fields);
     } else {
       this.query = this.query.select('-__v');
