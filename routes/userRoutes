@@ -18,6 +18,7 @@ router.patch(
 
 router
   .route('/myAccount')
+  .get(authController.protectRoute, userController.getMyInfo)
   .patch(authController.protectRoute, userController.updateMyInfo)
   .delete(authController.protectRoute, userController.deleteMyAcc);
 
