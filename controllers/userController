@@ -11,6 +11,18 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
+exports.getMyInfo = (req, res, next) => {
+  const user = {
+    name: req.user.name,
+    email: req.user.email,
+  };
+
+  res.status(200).json({
+    status: 'success',
+    data: user,
+  });
+};
+
 exports.updateMyInfo = catchAsync(async (req, res, next) => {
   // 1) Produce error if user tries to update password
   if (req.body.password || req.body.passwordConfirm) {
