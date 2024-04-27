@@ -20,6 +20,7 @@
   "homepage": "https://github.com/MoazAlaa7/Natours#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "dotenv": "^16.4.1",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
