@@ -34,4 +34,6 @@ node.js, express, mongoDB and mongoose.
      - [x] Prevent Parameter Pollution 
      
 
-      
+## 📔 API Documentation
+Check out the full documentation and run the API in Postman  
+[Natours API](https://documenter.getpostman.com/view/22320102/2s84LLxYNo)
